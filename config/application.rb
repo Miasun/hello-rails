@@ -1,6 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "sprockets/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,7 +26,6 @@ module Parser
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.eager_load_paths += %W(#{config.root}/lib)
     config.eager_load_paths += Dir["#{config.root}/lib/**/"]
-    config.active_record.raise_in_transactional_callbacks = true
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.time_zone = "Beijing"

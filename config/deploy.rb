@@ -2,13 +2,13 @@
 lock '3.5.0'
 
 set :application, 'myproject'
-set :user, 'root'
+set :user, 'deployer'
 set :repo_url, 'ssh://git@github.com/Miasun/hello-rails.git'
 set :rvm_ruby_version, '2.2.1'
 set :log_level, :info
 
 # 一些私密性的文件应该出现在这个队列中，因为他们是直接存放在服务器上的，capistrano部署的时候也会从这些地方读取对应的文件
-set :linked_files, %w{config/database.yml config/secrets.yml} # files we want symlinking to specific entries in shared.
+set :linked_files, %w{config/secrets.yml} # files we want symlinking to specific entries in shared.
 # 如果有一些公用的文档，可以让capistrano部署时为你生成
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
